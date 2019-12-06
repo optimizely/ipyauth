@@ -205,7 +205,7 @@ const optimizely = {
 
                         // set expiry
                         const now = new Date();
-                        creds.expiry =new Date(now.getTime() + creds.expires_in * 1000);
+                        creds.expiry = new Date(now.getTime() + creds.expires_in * 1000);
                         creds.scope = url_params.scope;
                         resolve([true, creds]);
                     })
