@@ -147,7 +147,7 @@ const buidReadMessage = that => {
     return readMessage;
 };
 
-const login = that => startAuthFlow(that, 'iframe', 'none');
+const login = that => startAuthFlow(that, 'popup', 'none');
 
 const updateDisplay = (that, objCreds) => {
     console.log('start updateDisplay');
