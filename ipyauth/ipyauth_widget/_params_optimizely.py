@@ -9,6 +9,7 @@ from ._util import Util
 
 class ParamsOptimizely(HasTraits):
     """
+    Optimizely's oAuth docs:
     https://developers.optimizely.com/x/authentication/oauth/
     """
 
@@ -18,7 +19,6 @@ class ParamsOptimizely(HasTraits):
     client_id = Unicode()
     redirect_uri = Unicode()
     scopes = Unicode()
-    username = Unicode()
 
     def __init__(self,
                  name='optimizely',
@@ -27,7 +27,6 @@ class ParamsOptimizely(HasTraits):
                  client_id=None,
                  redirect_uri=None,
                  scopes='all',
-                 username=None,
                  dotenv_folder='.',
                  dotenv_file=None,
                  ):
@@ -54,8 +53,6 @@ class ParamsOptimizely(HasTraits):
             self.redirect_uri = redirect_uri
         if scopes:
             self.scopes = scopes
-        if username:
-            self.username = username
 
         self.data = self.build_data()
 
@@ -96,7 +93,6 @@ class ParamsOptimizely(HasTraits):
                             'client_id',
                             'redirect_uri',
                             'scopes',
-                            'username'
                             ]
 
         data = {}
