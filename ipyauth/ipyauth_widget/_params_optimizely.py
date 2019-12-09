@@ -8,7 +8,7 @@ from ._util import Util
 
 class ParamsOptimizely(HasTraits):
     """
-    `Optimizely OAuth Documentation <https://developers.optimizely.com/x/authentication/oauth/>`_
+    Optimizely OAuth Documentation https://developers.optimizely.com/x/authentication/oauth/
     """
 
     name = Unicode()
@@ -22,7 +22,6 @@ class ParamsOptimizely(HasTraits):
         self,
         name="optimizely",
         response_type=None,
-        domain=None,
         client_id=None,
         redirect_uri=None,
         scopes="all",
@@ -42,8 +41,6 @@ class ParamsOptimizely(HasTraits):
 
         if response_type:
             self.response_type = response_type
-        if domain:
-            self.domain = domain
         if client_id:
             self.client_id = client_id
         if redirect_uri:
