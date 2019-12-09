@@ -1,4 +1,3 @@
-
 import json
 
 from copy import deepcopy as copy
@@ -19,23 +18,22 @@ class ParamsOptimizely(HasTraits):
     redirect_uri = Unicode()
     scopes = Unicode()
 
-    def __init__(self,
-                 name='optimizely',
-                 response_type=None,
-                 domain=None,
-                 client_id=None,
-                 redirect_uri=None,
-                 scopes='all',
-                 dotenv_folder='.',
-                 dotenv_file=None,
-                 ):
+    def __init__(
+        self,
+        name="optimizely",
+        response_type=None,
+        domain=None,
+        client_id=None,
+        redirect_uri=None,
+        scopes="all",
+        dotenv_folder=".",
+        dotenv_file=None,
+    ):
         """
         Initializes the class with a config .env file and optional
         params to override the config
         """
-        dic = Util.load_dotenv(dotenv_folder,
-                               dotenv_file,
-                               name)
+        dic = Util.load_dotenv(dotenv_folder, dotenv_file, name)
 
         for k, v in dic.items():
             setattr(self, k, v)
@@ -63,49 +61,44 @@ class ParamsOptimizely(HasTraits):
         d = {k: v for k, v in d.items() if v is not None}
         return d
 
-    @validate('response_type')
+    @validate("response_type")
     def _valid_response_type(self, proposal):
         """
         Checks that the response_type value is equal to "token",
         which is used for OAuth Implicit Grant
         """
-        if not proposal['value'] == 'token':
+        if not proposal["value"] == "token":
             raise TraitError('response_type must be "token"')
-        return proposal['value']
+        return proposal["value"]
 
-    @validate('redirect_uri')
+    @validate("redirect_uri")
     def _valid_redirect_uri(self, proposal):
         """
         Checks that the redirect_uri is a valid URL
         """
-        if not Util.is_url(proposal['value']):
-            raise TraitError('redirect_uri must be a url')
-        return proposal['value']
+        if not Util.is_url(proposal["value"]):
+            raise TraitError("redirect_uri must be a url")
+        return proposal["value"]
 
     def build_data(self):
         """
         Returns a dictionary of the passed in parameters
         """
-        props_params = ['name',
-                        ]
-        props_url_params = ['response_type',
-                            'client_id',
-                            'redirect_uri',
-                            'scopes',
-                            ]
+        props_params = ["name"]
+        props_url_params = ["response_type", "client_id", "redirect_uri", "scopes"]
 
         data = {}
         for k in props_params:
             v = getattr(self, k)
-            if v != '':
+            if v != "":
                 data[k] = v
 
         data_url = {}
         for k in props_url_params:
             v = getattr(self, k)
-            if v != '':
+            if v != "":
                 data_url[k] = v
 
-        data['url_params'] = data_url
+        data["url_params"] = data_url
 
         return data
