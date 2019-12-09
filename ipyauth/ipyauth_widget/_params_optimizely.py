@@ -24,7 +24,7 @@ class ParamsOptimizely(HasTraits):
         response_type=None,
         client_id=None,
         redirect_uri=None,
-        scopes="all",
+        scopes=None,
         dotenv_folder=".",
         dotenv_file=None,
     ):
