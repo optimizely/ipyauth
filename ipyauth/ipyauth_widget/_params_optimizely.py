@@ -9,8 +9,7 @@ from ._util import Util
 
 class ParamsOptimizely(HasTraits):
     """
-    Optimizely's oAuth docs:
-    https://developers.optimizely.com/x/authentication/oauth/
+    `Optimizely OAuth Documentation <https://developers.optimizely.com/x/authentication/oauth/>`_
     """
 
     name = Unicode()
