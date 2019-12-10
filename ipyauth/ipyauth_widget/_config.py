@@ -8,6 +8,7 @@ def _build_dics():
     dic_filename = {
         'auth0': {'logo': 'auth0-logo.png'},
         'google': {'logo': 'google-logo.png'},
+        'optimizely': {'logo': 'optimizely-logo.png'},
         'sgconnectPRD': {'logo': 'sg-logo.png'},
         'sgconnectHOM': {'logo': 'sg-logo.png'},
     }
