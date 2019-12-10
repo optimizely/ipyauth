@@ -164,7 +164,6 @@ const updateDisplay = (that, objCreds) => {
     that.form.btn_main.model.set_state({ description: 'Clear' });
     that.form.logged_as.model.set({ value: util.toHtml(objCreds.username, 'name') });
     that.form.expires_at.model.set({ value: util.toHtml(objCreds.getStrExpiry(), 'expiry') });
-    that.form.btn_inspect.model.set_state({ disabled: false });
     that.form.scope.model.set({
         value: util.toHtml(objCreds.scope, 'scope', objCreds.scope_separator),
     });
@@ -218,7 +217,6 @@ const clear = that => {
     that.form.logged_as.model.set({ value: '' });
     that.form.time_to_exp.model.set({ value: '' });
     that.form.expires_at.model.set({ value: '' });
-    that.form.btn_inspect.model.set_state({ disabled: true });
     that.form.scope.model.set({ value: '' });
 
     // save state
@@ -227,29 +225,9 @@ const clear = that => {
 
 const { isLogged } = util;
 
-const inspectJwt = token => {
-    const url = `https://jwt.io/?token=${token}`;
-    util.openInNewTab(url);
-};
-
-const inspect = that => {
-    const creds = Object.assign({}, that.creds);
-    if (creds.id_token) {
-        // exception: breaks url encoding
-        delete creds.id_token.picture;
-    }
-    if (that.params.isJWT) {
-        inspectJwt(creds.access_token);
-        creds.access_token = util.parseJwt(creds.access_token);
-    }
-    const json = encodeURI(JSON.stringify(creds));
-    const url = `https://jsoneditoronline.org/?json=${json}`;
-    util.openInNewTab(url);
-};
 
 export default {
     login,
     clear,
     isLogged,
-    inspect,
 };

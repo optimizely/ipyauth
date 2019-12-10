@@ -77,7 +77,6 @@ const AuthView = widgets.VBoxView.extend({
                 resolved.logged_as = views2[1];
                 resolved.time_to_exp = views2[2];
                 resolved.expires_at = views2[3];
-                resolved.btn_inspect = views2[4];
                 resolved.scope = views2[5];
 
                 const btn_main_clicked = function() {
@@ -89,12 +88,6 @@ const AuthView = widgets.VBoxView.extend({
                     }
                 };
                 resolved.btn_main.el.addEventListener('click', btn_main_clicked);
-
-                const btn_inspect_clicked = function() {
-                    console.log('btn_inspect clicked');
-                    auth.inspect(that);
-                };
-                resolved.btn_inspect.el.addEventListener('click', btn_inspect_clicked);
 
                 that.form = resolved;
 

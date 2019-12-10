@@ -61,7 +61,6 @@ class Auth(wg.VBox):
         wg_logged_as = self.build_widget_logged_as()
         wg_time_to_exp = self.build_widget_time_to_exp()
         wg_expire_at = self.build_widget_expire_at()
-        wg_button_inspect = self.build_widget_button_inspect()
         wg_scope = self.build_widget_scope()
 
         b1 = wg.HBox([wg_logo,
@@ -69,7 +68,6 @@ class Auth(wg.VBox):
                       wg_logged_as,
                       wg_time_to_exp,
                       wg_expire_at,
-                      wg_button_inspect,
                       ]
                      )
         b2 = wg.HBox([wg_scope])
