@@ -12,7 +12,6 @@ class ParamsOptimizely(HasTraits):
     """
 
     name = Unicode()
-    authorize_endpoint = Unicode()
     response_type = Unicode()
     client_id = Unicode()
     redirect_uri = Unicode()
