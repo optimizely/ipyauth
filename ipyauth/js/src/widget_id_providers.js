@@ -201,7 +201,7 @@ const optimizely = {
                         }
 
                         // set user message
-                        creds.username = `Authenticated to account ID: ${userInfo.data.current_account.id.toString()} as ${userInfo.data.profile.email}(${userInfo.data.profile.first_name} ${userInfo.data.profile.last_name})`;
+                        creds.username = `Authenticated to account ID: ${userInfo.data.current_account.id.toString()} as ${userInfo.data.profile.email} (${userInfo.data.profile.first_name} ${userInfo.data.profile.last_name})`;
 
                         // set expiry
                         const now = new Date();
