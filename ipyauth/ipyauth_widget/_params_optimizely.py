@@ -16,7 +16,7 @@ class ParamsOptimizely(HasTraits):
     response_type = Unicode()
     client_id = Unicode()
     redirect_uri = Unicode()
-    scopes = Unicode()
+    scope = Unicode()
 
     def __init__(
         self,
@@ -24,7 +24,7 @@ class ParamsOptimizely(HasTraits):
         response_type=None,
         client_id=None,
         redirect_uri=None,
-        scopes=None,
+        scope=None,
         dotenv_folder=".",
         dotenv_file=None,
     ):
@@ -45,8 +45,8 @@ class ParamsOptimizely(HasTraits):
             self.client_id = client_id
         if redirect_uri:
             self.redirect_uri = redirect_uri
-        if scopes:
-            self.scopes = scopes
+        if scope:
+            self.scope = scope
 
         self.data = self.build_data()
 
@@ -82,7 +82,7 @@ class ParamsOptimizely(HasTraits):
         Returns a dictionary of the passed in parameters
         """
         props_params = ["name"]
-        props_url_params = ["response_type", "client_id", "redirect_uri", "scopes"]
+        props_url_params = ["response_type", "client_id", "redirect_uri", "scope"]
 
         data = {}
         for k in props_params:
