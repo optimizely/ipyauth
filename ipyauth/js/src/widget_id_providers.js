@@ -156,9 +156,68 @@ const google = {
     },
 };
 
+// https://developers.optimizely.com/x/authentication/oauth
+const optimizely = {
+    name: 'optimizely',
+    authorize_endpoint: 'https://app.optimizely.com/oauth2/authorize',
+    url_params: {
+        response_type: '',
+        redirect_uri: 'my-redirect-url',
+        client_id: 'my-client-id',
+        scope: 'my-scopes',
+        state: 'my-state',
+    },
+    scope_separator: ' ',
+    isJWT: false,
+    isValid: (params, creds) => {
+        const { url_params } = params;
+        return new Promise((resolve, reject) => {
+            function useEmpty(error) {
+                console.log('Response /me: ERROR');
+                util.debug('error', error);
+                return {};
+            }
+
+            const options = [
+                {
+                    // User info request
+                    method: 'get',
+                    url: 'https://api.optimizely.com/v2/me',
+                    headers: {
+                        Authorization: `Bearer ${creds.access_token}`,
+                    },
+                },
+            ];
+
+            axios
+                .all([
+                    axios.request(options[0]).catch(useEmpty),
+                ])
+                .then(
+                    axios.spread((userInfo) => {
+                        console.log('Analyze response for /me');
+                        if (!userInfo) {
+                            resolve([false, creds]);
+                        }
+
+                        // set user message
+                        creds.username = `Authenticated to account ID: ${userInfo.data.current_account.id.toString()} as ${userInfo.data.profile.email}(${userInfo.data.profile.first_name} ${userInfo.data.profile.last_name})`;
+
+                        // set expiry
+                        const now = new Date();
+                        creds.expiry = new Date(now.getTime() + creds.expires_in * 1000);
+                        creds.scope = url_params.scope;
+                        resolve([true, creds]);
+                    })
+                );
+        });
+    },
+};
+
 export default {
     sgconnectPRD,
     sgconnectHOM,
     auth0,
     google,
+    optimizely,
 };

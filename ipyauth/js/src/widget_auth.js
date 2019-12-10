@@ -25,8 +25,8 @@ const startAuthFlowInPopup = (authUrl, readMessage, name, windowProps = null) =>
             resizable: 'yes',
             scrollbars: 'yes',
             status: 'yes',
-            width: '660',
-            height: '790',
+            width: '1200',
+            height: '800',
         };
     }
     props = util.buildWindowProps(props);
@@ -147,7 +147,7 @@ const buidReadMessage = that => {
     return readMessage;
 };
 
-const login = that => startAuthFlow(that, 'iframe', 'none');
+const login = that => startAuthFlow(that, 'popup', 'none');
 
 const updateDisplay = (that, objCreds) => {
     console.log('start updateDisplay');
