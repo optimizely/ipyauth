@@ -163,11 +163,14 @@ const updateDisplay = (that, objCreds) => {
 
     that.form.btn_main.model.set_state({ description: 'Clear' });
     that.form.logged_as.model.set({ value: util.toHtml(objCreds.username, 'name') });
+    that.form.logged_as.$el[0].style.visibility = "visible";
     that.form.expires_at.model.set({ value: util.toHtml(objCreds.getStrExpiry(), 'expiry') });
+    that.form.expires_at.$el[0].style.visibility = "visible";
     that.form.btn_inspect.model.set_state({ disabled: false });
     that.form.scope.model.set({
         value: util.toHtml(objCreds.scope, 'scope', objCreds.scope_separator),
     });
+    that.form.scope.$el[0].style.visibility = "visible";
 
     // save state
     that.model.save_changes();
@@ -190,6 +193,7 @@ const startCountdown = (that, objCreds) => {
                 const time_to_exp = util.toHMS(nbSec);
                 that.model.set({ time_to_exp });
                 that.form.time_to_exp.model.set({ value: util.toHtml(time_to_exp, 'time-to-exp') });
+                that.form.time_to_exp.$el[0].style.visibility = "visible";
                 // save state
                 that.model.save_changes();
             }
@@ -216,10 +220,14 @@ const clear = that => {
     });
     that.form.btn_main.model.set_state({ description: 'Sign In' });
     that.form.logged_as.model.set({ value: '' });
+    that.form.logged_as.$el[0].style.visibility = "hidden";
     that.form.time_to_exp.model.set({ value: '' });
+    that.form.time_to_exp.$el[0].style.visibility = "hidden";
     that.form.expires_at.model.set({ value: '' });
+    that.form.expires_at.$el[0].style.visibility = "hidden";
     that.form.btn_inspect.model.set_state({ disabled: true });
     that.form.scope.model.set({ value: '' });
+    that.form.scope.$el[0].style.visibility = "hidden";
 
     // save state
     that.model.save_changes();
