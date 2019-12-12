@@ -219,7 +219,7 @@ const clear = that => {
     });
     that.form.btn_main.model.set_state({ description: 'Sign In' });
     that.form.logged_as.model.set({ value: '' });
-    that.form.logged_as.$el[0].style.visibility = "";
+    that.form.logged_as.$el[0].style.visibility = "hidden";
     that.form.time_to_exp.model.set({ value: '' });
     that.form.time_to_exp.$el[0].style.visibility = "hidden";
     that.form.expires_at.model.set({ value: '' });
