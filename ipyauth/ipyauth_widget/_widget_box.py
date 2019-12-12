@@ -112,7 +112,8 @@ class Auth(wg.VBox):
             button_style='',
             layout=wg.Layout(width='90px',
                              margin='0 0 0 5px',
-                             align_self='center'),
+                             align_self='center',
+                             visibility='hidden'),
         )
         return widget
 
@@ -124,7 +125,8 @@ class Auth(wg.VBox):
                 width='275px',
                 border='1px lightgray solid',
                 padding='3px',
-                overflow_x='auto')
+                overflow_x='auto',
+                visibility='hidden')
         )
         return widget
 
@@ -135,7 +137,8 @@ class Auth(wg.VBox):
             layout=wg.Layout(
                 width='70px',
                 border='1px lightgray solid',
-                padding='3px')
+                padding='3px',
+                visibility='hidden')
         )
         return widget
 
@@ -147,7 +150,8 @@ class Auth(wg.VBox):
                 width='300px',
                 # max_height='28px',
                 border='1px lightgray solid',
-                padding='3px')
+                padding='3px',
+                visibility='hidden')
         )
         return widget
 
@@ -160,7 +164,8 @@ class Auth(wg.VBox):
                 border='1px lightgray solid ',
                 width='827px',
                 height='47px',
-                margin='5px 0 0 5px'
+                margin='5px 0 0 5px',
+                visibility='hidden'
             )
         )
         return widget
